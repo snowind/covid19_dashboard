@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-
+import os
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
@@ -59,14 +59,15 @@ boxBorderStyle = {
 ######################################
 
 # get data directly from github. The data source provided by Johns Hopkins University.
-url_confirmed = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv'
-url_deaths = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv'
-url_recovered = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_recovered_global.csv'
+#url_confirmed = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv'
+#url_deaths = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv'
+#url_recovered = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_recovered_global.csv'
+
 
 # Data can also be saved locally and read from local drive
-# url_confirmed = 'time_series_covid19_confirmed_global.csv'
-# url_deaths = 'time_series_covid19_deaths_global.csv'
-# url_recovered = 'time_series_covid19_recovered_global.csv'
+url_confirmed = os.path.join('data','time_series_covid19_confirmed_global.csv')
+url_deaths = os.path.join('data','time_series_covid19_deaths_global.csv')
+url_recovered = os.path.join('data','time_series_covid19_recovered_global.csv')
 
 df_confirmed = pd.read_csv(url_confirmed)
 df_deaths = pd.read_csv(url_deaths)
@@ -207,7 +208,7 @@ map_data = map_data.sort_values("new").drop('new', axis=1)
 #############################################################################
 # mapbox_access_token keys, not all mapbox function require token to function. 
 #############################################################################
-mapbox_access_token = 'insert your token here'
+mapbox_access_token = 'pk.eyJ1IjoiaHpoemp1IiwiYSI6ImNrOWZvb3p6czBkeTQzZmp3bWRrb3dlaDEifQ.WpmlkD-oZkxtonC2fipAdw'
 
 ###########################
 # functions to create map
